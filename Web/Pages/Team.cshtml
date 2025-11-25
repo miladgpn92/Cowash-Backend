@@ -1,0 +1,21 @@
+﻿@page
+@model Web.Pages.TeamModel
+@{
+    double Delay = 0.15;
+}
+
+@{
+    List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
+    {
+         new BreadcrumbItem()
+        {
+         Title="38",
+         Link="#"
+        }
+    };
+
+    ViewBag.AdminBarList = true;
+    ViewBag.AdminBarAdd = true;
+    ViewBag.AdminBarRoute = "team";
+}
+ 

@@ -1,0 +1,158 @@
+﻿@page
+@model Web.Pages.DTCMS.Menu.UpsertModel
+@inject IStringLocalizer<ResourceLibrary.Panel.Admin.Menu.Menu> Localizer;
+@inject IStringLocalizer<ResourceLibrary.Panel.Common.Global.Global> GlobalLocalizer;
+
+
+@{
+    if (Model.IsEdit)
+    {
+        ViewData["Title"] = GlobalLocalizer["Edit"] + ": " + Model?.Items?.Title;
+    }
+    else
+    {
+        ViewData["Title"] = Localizer["AddTItle"];
+    }
+
+    Layout = "_DashLayout";
+    ViewBag.HasBottomSheetMenu = false;
+
+}
+
+<form method="post">
+
+
+
+    <input type="hidden" asp-for="IsEdit" />
+    <input type="hidden" asp-for="Items.Id" />
+
+
+
+    <main>
+        <div class="rlt:text-right ltr:text-left">
+
+            <div class="mb-6">
+                <dt:input-text asp-for="Items.Title" target-class="page__slug" has-slug="true"></dt:input-text>
+            </div>
+
+            <div class="mb-6">
+                <dt:input-text asp-for="Items.Slug" class="page__slug"></dt:input-text>
+            </div>
+
+            <div class="">
+                <input type="hidden" asp-for="Items.Content" id="nested__menu__value" />
+            </div>
+
+            <div>
+
+                <div type="button" class="py-2 px-4 bg-white text-blue-600 cursor-pointer"
+                    data-sheet-control="sortable">@GlobalLocalizer["Add"]</div>
+                <div type="button" class="sortable__edit__btn py-2 px-4 bg-white text-blue-600 hidden"
+                    data-sheet-control="sortable__edit">@GlobalLocalizer["Edit"]</div>
+
+                <div id="nestedDemo" class="list-group py-2 nested-sortable">
+
+
+                </div>
+                <div id="sortable" data-min-height="40" data-not-dragable="true" class="sheet z-10" aria-hidden="true"
+                    role="dialog">
+                    <!-- Dark background for the sheet -->
+                    <div class="overlay bg-gray-800 opacity-75 w-full"></div>
+                    <!-- The sheet itself -->
+                    <div class="contents">
+                        <!-- Sheet controls -->
+                        <header class="controls bg-white !hidden">
+                            <!-- Button to close the sheet -->
+                            <button data-sheet-dismiss class="close-sheet ml-auto w-2" type="button"
+                                title="Close the sheet">&times;</button>
+                            <!-- The thing to drag if you want to resize the sheet -->
+                            <div class="draggable-area w-full flex justify-center">
+                                <div class="draggable-thumb w-12">@Localizer["BuilderAdd"]  </div>
+                            </div>
+                        </header>
+
+                        <!-- Body of the sheet -->
+                        <main class="body bg-white px-0">
+                            <div class="w-[400px] h-2/4 px-2 py-4">
+                                <input id="menu__title" type="text" placeholder="@Localizer["BuilderTitle"]"
+                                    class="my-3 ltr:text-left rtl:text-right appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm z-20 relative" />
+                                <input id="menu__link" type="text" placeholder="@Localizer["BuilderLink"]" dir="ltr"
+                                    class="text-left appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm z-20 relative" />
+                                <div class="flex justify-between place-items-end h-full">
+                                    <div class="cursor-pointer px-5 py-3 bg-indigo-600 shadow-sm rounded-md text-white"
+                                        data-sheet-dismiss onclick="addNewSortable()">@GlobalLocalizer["Submit",""]</div>
+                                    <div class="cursor-pointer px-5 py-3 bg-transparent shadow-sm  rounded-md text-gray-700"
+                                        data-sheet-dismiss>@GlobalLocalizer["Cancel"]</div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+                <div id="sortable__edit" data-min-height="40" data-not-dragable="true" class="sheet z-10"
+                    aria-hidden="true" role="dialog">
+                    <!-- Dark background for the sheet -->
+                    <div class="overlay bg-gray-800 opacity-75 w-full"></div>
+                    <!-- The sheet itself -->
+                    <div class="contents">
+                        <!-- Sheet controls -->
+                        <header class="controls bg-white !hidden">
+                            <!-- Button to close the sheet -->
+                            <button data-sheet-dismiss class="close-sheet ml-auto w-2" type="button"
+                                title="Close the sheet">&times;</button>
+                            <!-- The thing to drag if you want to resize the sheet -->
+                            <div class="draggable-area w-full flex justify-center">
+                                <div class="draggable-thumb w-12">@Localizer["BuilderAdd"]  </div>
+                            </div>
+                        </header>
+
+                        <!-- Body of the sheet -->
+                        <main class="body bg-white px-0">
+                            <div class="w-[400px] h-2/4 px-2 py-4">
+                                <input id="menu__title__edit" type="text" placeholder="@Localizer["BuilderTitle"]"
+                                    class="my-3 ltr:text-left rtl:text-right appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm z-20 relative" />
+                                <input id="menu__link__edit" type="text" placeholder="@Localizer["BuilderLink"]" dir="ltr"
+                                    class="text-left appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm z-20 relative" />
+                                <div class="flex justify-between place-items-end h-full">
+                                    <div class="cursor-pointer px-5 py-3 bg-yellow-300 shadow-sm rounded-md text-white"
+                                        data-sheet-dismiss onclick="editSortable()">@GlobalLocalizer["Edit"]</div>
+                                    <div class="cursor-pointer px-5 py-3 bg-transparent shadow-sm  rounded-md text-gray-700"
+                                         data-sheet-dismiss>
+                                        @GlobalLocalizer["Cancel"]
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+        @if (Model.IsEdit)
+        {
+            <button type="button"
+                class="text-center w-full focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5  mb-2 dark:focus:ring-yellow-900">
+                @GlobalLocalizer["Edit"]
+            </button>
+        }
+        else
+        {
+            <button type="button"
+                class="text-center w-full text-white bg-green-400 hover:bg-green-500 focus:ring-4 focus:outline-none focus:bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex dark:focus:ring-[#3b5998]/55  mb-2 items-center flex justify-center">
+                @GlobalLocalizer["Publish"]
+            </button>
+
+        }
+    </main>
+
+
+
+
+
+
+</form>

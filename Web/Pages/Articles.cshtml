@@ -1,0 +1,19 @@
+﻿@page "/articles/{cat?}"
+@model Web.Pages.ArticlesModel
+@{
+    List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
+    {
+         new BreadcrumbItem()
+        {
+         Title="74",
+         Link="#"
+        }
+    };
+
+    ViewBag.AdminBarList = true;
+    ViewBag.AdminBarAdd = true;
+    ViewBag.AdminBarRoute = "article";
+ 
+}
+
+ 

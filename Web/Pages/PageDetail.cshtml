@@ -1,0 +1,29 @@
+﻿@page "/p/{slug}"
+@model Web.Pages.PagesDetailModel
+@{
+    List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
+    {
+         new BreadcrumbItem()
+        {
+         Title="  صفحات",
+         Link="/pages"
+        },
+          new BreadcrumbItem()
+        {
+         Title=Model.Item.Title,
+         Link="#"
+        }
+    };
+
+
+    ViewBag.AdminBarRoute = "dynamicpage";
+    ViewBag.AdminBarEdit = true;
+    ViewBag.AdminBarDelete = true;
+    ViewBag.AdminBarId = Model.Item.Id;
+
+}
+ 
+
+ 
+
+ 

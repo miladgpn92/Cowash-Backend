@@ -1,0 +1,28 @@
+﻿@page
+@using Web.Pages.Template.Components.CommonComponent.AdminBar;
+@model Web.Pages.ContactUsModel
+
+@{
+    List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
+    {
+         new BreadcrumbItem()
+        {
+         Title="75",
+         Link="#"
+        }
+    };
+
+    List<AdminBarCustomModel>? Custom = new List<AdminBarCustomModel>()
+    {
+        new AdminBarCustomModel()
+        {
+            Icon="settings",
+Link = "/dtcms/settings",
+Text = "تنظیمات"
+        }
+    };
+
+    ViewBag.AdminBarCustom = Custom;
+
+}
+ 

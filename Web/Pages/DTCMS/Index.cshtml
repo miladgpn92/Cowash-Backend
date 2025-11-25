@@ -1,0 +1,125 @@
+﻿@page
+@using Services.Services.CMS.Article;
+@inject IStringLocalizer<ResourceLibrary.Panel.Admin.Dashboard.Dashboard> Localizer;
+@model IndexModel
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+    Layout = "_DashLayout";
+}
+ 
+<main>
+    <vc:greeting></vc:greeting>
+
+    <div class="flex justify-between mt-20 flex-wrap">
+        <div class=" flex flex-col w-full mb-4">
+            <div class=" justify-between items-center flex mb-4">
+                <h4 class="text-center text-gray-800 text-xl font-bold ">@Localizer["Article"]</h4>
+                <a href="/dtcms/article" class="text-right text-blue-600 text-base px-4 py-1 bg-blue-100 rounded hover:text-white hover:bg-blue-600">@Localizer["More"]</a>
+            </div>
+            @if (Model.ArticleList.Count == 0)
+            {
+                <a href="/dtcms/article" class="block relative  bg-gray-100 rounded py-7 mt-4">
+
+                    <div class="text-center">
+                        <span class="icon-Plus text-xl text-gray-700"></span>
+                    </div>
+                    <div class=" text-center text-gray-500 text-sm font-normal pt-6">@Localizer["SubmitFirstArticle"]</div>
+                </a>
+            }
+            else
+            {
+                <div class="swiper slider__container w-full mt-3" data-slide-per-view="1"
+                     data-auto-play="5000"
+                     data-break-point='{"320":{"slidesPerView":1.2,"spaceBetween":10},"540":{"slidesPerView":1.6,"spaceBetween":10},"768":{"slidesPerView":2.2,"spaceBetween":10},
+                            "992":{"slidesPerView":2.3,"spaceBetween":10},"1280":{"slidesPerView":2.3,"spaceBetween":10},"6000":{"slidesPerView":2.3,"spaceBetween":10}}'>
+                    <div class="swiper-wrapper pb-10">
+                        @foreach (var item in Model.ArticleList)
+                        {
+                            <div class="swiper-slide pb-4">
+                                <div class="bg-white rounded-md shadow-md flex-col justify-start items-start  flex ">
+
+                                    <dt:image src="@item.PicUrl" class="w-full h-[175px] object-cover relative rounded-tl-md rounded-tr-md" />
+                                    <div class="p-3 w-full">
+                                        <h4 class=" text-gray-900 text-base font-semibold min-h-12">
+                                            <dt:text length="50" class="truncate">
+                                                @item.Title
+                                            </dt:text>
+
+                                        </h4>
+                                        <div class="justify-start items-start flex">
+                                            <a href="/article/@item.Slug" target="_blank" class="inline-block rtl:ml-5 ltr:mr-4" aria-label="نمایش" data-microtip-position="top" role="tooltip">
+                                                <span class="icon-Eye text-xl text-blue-500"></span>
+                                            </a>
+
+
+
+                                            <a href="/dtcms/article/upsert?id=@item.Id" aria-label="ویرایش" data-microtip-position="top" role="tooltip">
+                                                <span class="icon-Pencil text-xl text-yellow-300"></span>
+                                            </a>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="flex flex-col w-full mb-4">
+            <div class=" justify-between items-center flex mb-4">
+                <h4 class="text-right text-gray-800 text-xl font-bold ">@Localizer["Page"]</h4>
+                <a href="/dtcms/dynamicpage" class="text-right text-blue-600 text-base px-4 py-1 bg-blue-100 rounded hover:text-white hover:bg-blue-600 ">@Localizer["More"]</a>
+            </div>
+
+            @if (Model.DynamicPageList.Count == 0)
+            {
+                <a href="/dtcms/dynamicpage" class="block relative  bg-gray-100 rounded py-7 mt-4">
+
+                    <div class="text-center">
+                        <span class="icon-Plus text-xl text-gray-700 "></span>
+                    </div>
+                    <div class=" text-center text-gray-500 text-sm font-normal pt-6">@Localizer["SubmitFirstPages"] </div>
+                </a>
+            }
+            else
+            {
+                <div class="swiper slider__container w-full mt-3 h-[480px] lg:h-[256px]" data-slide-per-view="2" data-horizontal="true"
+                     data-auto-play="5000"
+                     data-break-point='{"320":{"slidesPerView":1.2,"spaceBetween":10},"540":{"slidesPerView":1.6,"spaceBetween":10},"768":{"slidesPerView":2.2,"spaceBetween":10},
+                            "992":{"slidesPerView":2.3,"spaceBetween":10},"1280":{"slidesPerView":2.3,"spaceBetween":10},"6000":{"slidesPerView":2.3,"spaceBetween":10}}'>
+                    <div class="swiper-wrapper pb-10">
+
+                        @foreach (var item in Model.DynamicPageList)
+                        {
+                            <div class="swiper-slide pb-4">
+                                <div class="w-full p-5 bg-white rounded-[6.86px] shadow-md flex-col justify-start items-start inline-flex">
+                                    <div class=" flex-col justify-start  flex w-full">
+                                        <h4 class=" mb-3 text-gray-900 text-base font-semibold  min-h-12">
+                                            <dt:text length="50">
+                                                @item.Title
+                                            </dt:text>
+                                        </h4>
+                                        <div class="justify-start items-start flex">
+                                            <a href="/p/@item.Slug" target="_blank" class="inline-block rtl:ml-5 ltr:mr-4" aria-label="نمایش" data-microtip-position="top" role="tooltip">
+                                                <span class="icon-Eye text-xl text-blue-500"></span>
+                                            </a>
+
+                                            <a href="/dtcms/dynamicpage/upsert?id=@item.Id" aria-label="ویرایش" data-microtip-position="top" role="tooltip">
+                                                <span class="icon-Pencil text-xl text-yellow-300"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</main>

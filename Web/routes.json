@@ -1,0 +1,44 @@
+[
+  {
+    "id": 2,
+    "path": "/Articles",
+    "SeoTitle": "مقالات",
+    "SeoDesc": "لیست مقالات"
+  },
+  {
+    "id": 3,
+    "path": "/Contactus",
+    "SeoTitle": "تماس باما",
+    "SeoDesc": "  تماس با ما"
+  },
+  {
+    "id": 4,
+    "path": "/Pages",
+    "SeoTitle": "صفحات  ",
+    "SeoDesc": "    صفحات  "
+  },
+  {
+    "id": 5,
+    "path": "/AboutUs",
+    "SeoTitle": "درباره ما  ",
+    "SeoDesc": "    درباره ما  "
+  },
+  {
+    "id": 6,
+    "path": "/menu",
+    "SeoTitle": "منو ",
+    "SeoDesc": "    منو    "
+  },
+  {
+    "id": 7,
+    "path": "/team",
+    "SeoTitle": "تیم ",
+    "SeoDesc": "تیم   "
+  },
+  {
+    "id": 1,
+    "path": "/",
+    "SeoTitle": "کافه و رستوران دیژون آمل",
+    "SeoDesc": "کافه و رستوران دیژون آمل"
+  }
+]

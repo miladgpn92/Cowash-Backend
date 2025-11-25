@@ -1,0 +1,26 @@
+﻿{
+  "name": "کافه و رستوران دیژون",
+  "short_name": "Dijon",
+  "description": "کافه و رستوران دیژون",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0000",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "apple-mobile-web-app-capable": "yes",
+  "apple-mobile-web-app-status-bar-style": "black",
+  "apple-mobile-web-app-title": "Dijon",
+  "apple-touch-icon": "apple-touch-icon.png"
+}

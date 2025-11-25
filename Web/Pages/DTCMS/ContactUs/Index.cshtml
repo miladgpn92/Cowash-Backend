@@ -1,0 +1,99 @@
+﻿@page
+@model IndexModel
+@inject IStringLocalizer<ResourceLibrary.Panel.Admin.ContactUs.ContactUs> Localizer;
+@inject IStringLocalizer<ResourceLibrary.Panel.Common.Global.Global> GlobalLocalizer;
+@{
+    ViewData["Title"] = Localizer["Title"];
+    Layout = "_DashLayout";
+    string PageName = "contactus";
+  
+}
+
+<vc:page-action page-name="@PageName" search-filter-query="title" has-add="false"></vc:page-action>
+<dt:grid-container page-name="@PageName" page-title="@Localizer["Title"]" filter-count="@Model.PageFilter.filters.Count" page="@Model.PageFilter.arg.PageNumber" total="@Model.Items.Count">
+    <main class="my-8">
+        @foreach (var item in Model.Items)
+        {
+            <dt:grid-card item-id="@item.Id">
+                <div class="">
+                    <div class="text-gray-800 font-bold mb-2">
+                        @item.FullName
+                    </div>
+                    <div class="text-gray-600 font-normal text-sm">
+
+                        <dt:text length="60">
+                            @item.MessageText
+                        </dt:text>
+
+                    </div>
+                </div>
+                <div class="md:hidden rtl:mr-auto ml-[11px] ltr:ml-auto mr-[11px] flex align-center" data-sheet-control="mobile__more__sheet__@item.Id">
+                    @if (item.ContactUsState == Entities.ContactUs.ContactUsState.unseen)
+                    {
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full  mx-3  bg-yellow-100 text-amber-800 text-xs font-semibold">   @Localizer["UnSeen"] </span>
+                    }
+                    else
+                    {
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full  mx-3  bg-green-100 text-emerald-800 text-xs font-semibold ">   @Localizer["Seen"] </span>
+                    }
+
+                    <button>
+                        <span class="icon-Dots-vertical"></span>
+                    </button>
+                </div>
+                <div class="hidden md:flex md:items-center rtl:md:mr-auto rtl:md:ml-[11px] ltr:md:ml-auto ltr:md:mr-[11px]">
+                    @if(item.ContactUsState == Entities.ContactUs.ContactUsState.unseen)
+                    {
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full   bg-yellow-100 text-amber-800 text-xs font-semibold ltr:mr-2 rtl:ml-2"> @Localizer["UnSeen"]   </span>
+                    }
+                    else
+                    {
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full   bg-green-100 text-emerald-800 text-xs font-semibold ltr:mr-2 rtl:ml-2"> @Localizer["Seen"]   </span>
+                    }
+             
+                  
+                    <a class="cursor-pointer mr-4" href="/dtcms/@PageName/view?id=@item.Id">
+                        <span class="icon-Eye text-xl text-gray-700"></span>
+                    </a>
+                    <div class="cursor-pointer mr-4" data-sheet-control="delete__box__@item.Id">
+                        <span class="icon-Trash text-xl text-gray-700"></span>
+
+                    </div>
+                </div>
+                <dt:bottom-sheet id="mobile__more__sheet__@item.Id" min-height="37">
+                    <div class="w-[100%] flex flex-col justify-between pb-10 rtl:mr-auto items-end ltr:ml-auto items-start  ">
+                        <h3 class="mx-auto font-semibold text-lg mb-5">@item.FullName</h3>
+                        <h4 class="mx-auto font-semibold text-lg mb-5 ">
+
+                            @if (item.ContactUsState == Entities.ContactUs.ContactUsState.unseen)
+                            {
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full   bg-yellow-100 text-amber-800 text-xs font-semibold"> @Localizer["UnSeen"] </span>
+                            }
+                            else
+                            {
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full   bg-green-100 text-emerald-800 text-xs font-semibold ">   @Localizer["Seen"] </span>
+                            }
+
+                        </h4>
+
+                        <a class="cursor-pointer rtl:mr-4 ltr:ml-4 border-b-2 pb-2 border-gray-100 w-full pt-6 flex"
+                           href="/dtcms/@PageName/view?id=@item.Id">
+                            <span class="icon-Eye text-xl text-gray-700"></span>
+                            <span class="font-semibold text-base mx-2">@GlobalLocalizer["View"]</span>
+                        </a>
+                        <div class="cursor-pointer w-[100%] rtl:mr-4 ltr:ml-4 pt-6 flex" data-sheet-control="delete__box__@item.Id">
+                            <span class="icon-Trash text-xl text-red-600"></span>
+                            <span class="font-semibold text-base mx-2 text-red-600">@GlobalLocalizer["Delete"]</span>
+                        </div>
+                    </div>
+
+                </dt:bottom-sheet>
+                <vc:delete-single title="@item.FullName" id="@item.Id"></vc:delete-single>
+
+
+            </dt:grid-card>
+        }
+        <dt:pagination page="@Model.PageFilter.arg.PageNumber" size="@Model.PageFilter.arg.PageSize" total="@Model.Items.Count"></dt:pagination>
+    </main>
+
+</dt:grid-container>

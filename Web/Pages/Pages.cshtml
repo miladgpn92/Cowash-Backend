@@ -1,0 +1,27 @@
+﻿@page
+@model Web.Pages.PagesModel
+@{
+}
+
+
+@{
+    List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
+    {
+         new BreadcrumbItem()
+        {
+         Title="80",
+         Link="#"
+        }
+    };
+
+    ViewBag.AdminBarList = true;
+    ViewBag.AdminBarAdd = true;
+    ViewBag.AdminBarRoute = "dynamicpage";
+}
+
+
+
+
+ 
+ 
+ 

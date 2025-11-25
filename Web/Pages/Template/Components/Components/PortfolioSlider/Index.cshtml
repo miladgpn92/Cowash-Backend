@@ -1,0 +1,65 @@
+﻿@using SharedModels.Dtos.Shared;
+@model List<PortfolioSelectDto>
+
+<!-- work area start  -->
+<div class="work-area has_fade_anim">
+    <div class="container-hd">
+        <div class="work-area-inner">
+            <div class="works-wrapper-box">
+                <div class="works-wrapper">
+                    <div class="swiper work-slider-active">
+                        <div class="swiper-wrapper">
+
+                            @foreach (var item in Model.Take(6).ToList())
+                            {
+                                <div class="swiper-slide">
+                                    <a href="/portfolio/@item.Slug">
+                                        <div class="work-box">
+                                            <div class="thumb">
+                                                <img src="@item.ThumbPicUrl" alt="@item.Title">
+                                            </div>
+                                            <div class="content">
+                                                <div class="icon">
+                                                    <img src="~/Template/assets/imgs/shape/img-s-69.webp" alt="icon">
+                                                </div>
+                                                <h3 class="title">@item.Title</h3>
+                                                <span class="meta">@item.PortfolioCategoryTitle  </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+
+                         
+                       
+                        </div>
+                    </div>
+                    <div class="swiper work-slider-active" dir="rtl">
+                        <div class="swiper-wrapper">
+                            @foreach (var item in Model.Skip(6).ToList())
+                            {
+                                <div class="swiper-slide">
+                                    <a href="/portfolio/@item.Slug">
+                                        <div class="work-box">
+                                            <div class="thumb">
+                                                <img src="@item.ThumbPicUrl" alt="@item.Title">
+                                            </div>
+                                            <div class="content">
+                                                <div class="icon">
+                                                    <img src="~/Template/assets/imgs/shape/img-s-69.webp" alt="icon">
+                                                </div>
+                                                <h3 class="title">@item.Title</h3>
+                                                <span class="meta">@item.PortfolioCategoryTitle  </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- work area end  -->

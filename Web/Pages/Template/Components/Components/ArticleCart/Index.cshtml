@@ -1,0 +1,24 @@
+﻿@using Web.Pages.Template.Components.ViewComponents;
+ 
+@model ArticleCartVCModel
+
+<!-- Post Item Start -->
+<div class="post-item wow fadeInUp">
+    <div class="post-featured-image">
+        <a href="/article/@Model.Article.Slug" data-cursor-text="دیژون">
+            <figure class="image-anime">
+             
+                <img src="@(string.IsNullOrEmpty(Model.Article.PicUrl) ? "/Template/images/no-pic-blog.svg" : Model.Article.PicUrl)" alt=" @Model.Article.Title">
+            </figure>
+        </a>
+    </div>
+    <div class="blog-item-body">
+        <div class="post-item-content">
+            <h3><a href="/article/@Model.Article.Slug"> @Model.Article.Title</a></h3>
+        </div>
+        <div class="blog-item-btn">
+            <a href="/article/@Model.Article.Slug" class="readmore-btn">نمایش بیشتر</a>
+        </div>
+    </div>
+</div>
+<!-- Post Item End -->

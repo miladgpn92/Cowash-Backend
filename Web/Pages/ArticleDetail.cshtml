@@ -1,0 +1,30 @@
+﻿@page "/article/{slug}"
+@model Web.Pages.ArticleDetailModel
+
+
+@{
+    List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
+    {
+         new BreadcrumbItem()
+        {
+         Title="  مقالات",
+         Link="/articles"
+        },
+          new BreadcrumbItem()
+        {
+         Title=Model.Item.Title,
+         Link="#"
+        }
+    };
+
+
+    ViewBag.AdminBarRoute = "article";
+    ViewBag.AdminBarEdit = true;
+    ViewBag.AdminBarDelete = true;
+    ViewBag.AdminBarId = Model.Item.Id;
+
+    
+}
+
+
+ 

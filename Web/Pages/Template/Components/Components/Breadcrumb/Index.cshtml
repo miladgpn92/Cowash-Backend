@@ -1,0 +1,44 @@
+﻿@model BreadcrumbVCModel
+@{
+    int index = 1;
+}
+
+ 
+<!-- Page Header Start -->
+<div class="page-header parallaxie">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Page Header Box Start -->
+                <div class="page-header-box">
+
+
+                    <vc:content id="@int.Parse(Model.Title)" tag="h1" attr="data-cursor='-opaque'"></vc:content>
+ 
+                    <nav class="wow fadeInUp">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">خانه</a></li>
+
+
+                            @foreach (var item in Model.Breadcrumbs)
+                            {
+
+                                <li class="breadcrumb-item @(index == Model.Breadcrumbs.Count ? "active":"")" aria-current="page">
+                                    <vc:content id="@int.Parse(item.Title)"></vc:content>
+                                    
+                                    </li>
+ 
+                                index++;
+                            }
+
+
+                         
+                        </ol>
+                    </nav>
+                </div>
+                <!-- Page Header Box End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->

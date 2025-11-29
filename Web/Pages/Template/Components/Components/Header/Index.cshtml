@@ -11,7 +11,7 @@
     {
         hasHeader = false;
     }
-    
+
 }
 
 
@@ -19,67 +19,78 @@
 @if (hasHeader == true)
 {
 
-
-    <!-- Header Start -->
-    <header class="main-header">
-        <div class="header-sticky">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container">
-                    <!-- Logo Start -->
-                    <a class="navbar-brand" href="/">
-                        <img src="@Model.Setting.LogoUrl" alt="@Model.Setting.SiteTitle">
-                    </a>
-                    <!-- Logo End -->
-                    <!-- Main Menu Start -->
-                    <div class="collapse navbar-collapse main-menu">
-                        <div class="nav-menu-wrapper">
-
-
-                            <ul class="navbar-nav mr-auto" id="menu">
-
-
-                                @foreach (var item in Model.Menus.Where(a => a.parentId == 0).ToList())
-                                {
-                                    <li class='nav-item @(Model.Menus.Any(a => a.parentId == item.id) ? "submenu":"")'>
-                                        <a href="@item.link" data-href="@item.link" class="nav-link">@item.text</a>
-                                        @if (Model.Menus.Any(a => a.parentId == item.id))
-                                        {
-                                            <ul>
-
-                                                @foreach (var step2 in Model.Menus.Where(a => a.parentId == item.id).ToList())
-                                                {
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="@step2.link" data-href="@item.link">
-                                                            @step2.text
-                                                        </a>
-                                                    </li>
-                                                }
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo-wrapper">
+                <a class="logo" href="/">
+                    <img alt="@Model.Setting.SiteTitle" class="logo-img" src="@Model.Setting.LogoUrl" />
+                </a>
+                <!-- <a class="logo" href="index.html"><div class="logo"><img src="/Template/img/logo.png" alt=""></div></a> -->
+            </div>
+            <!-- Button -->
+            <button aria-controls="navbar" aria-expanded="false" aria-label="ناوبری را تغییر دهید"
+                    class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon">
+                    <i class="fa-solid fa-bars">
+                    </i>
+                </span>
+            </button>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbar">
+                <ul class="navbar-nav ">
 
 
+                    @foreach (var item in Model.Menus.Where(a => a.parentId == 0).ToList())
+                    {
+                        <li class='nav-item @(Model.Menus.Any(a => a.parentId == item.id) ? "dropdown" : "")'>
+                            @if (Model.Menus.Any(a => a.parentId == item.id))
+                            {
+                                <a class="nav-link" href="   @item.link">
+                                    @item.text
+                                </a>
+                            }else
+                            {
+                                <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-auto-close="outside"
+                                   data-bs-toggle="dropdown" href="#" role="button">
+                                    @item.text
+
+                                </a>
+                            }
+                        
+                            @if (Model.Menus.Any(a => a.parentId == item.id))
+                            {
+                                <ul class="dropdown-menu">
+
+                                    @foreach (var step2 in Model.Menus.Where(a => a.parentId == item.id).ToList())
+                                    {
+                                        <li class="nav-item">
+                                            <a class="dropdown-item" href="@step2.link" >
+                                                <span>
+                                                    @step2.text
+                                                </span>
+                                             
+                                            </a>
+                                        </li>
+                                    }
 
 
-                                            </ul>
-                                        }
-                                    </li>
-                                }
 
 
-                            </ul>
+                                </ul>
+                            }
+                        </li>
+                    }
+
+
  
-                        </div>
-                        <!-- Header Contact Box Start -->
-                        <div class="header-btn">
-                            <a href="/menu" class="btn-default">منو دیژون</a>
-                        </div>
-                        <!-- Header Contact Box End -->
-                    </div>
-                    <!-- Main Menu End -->
-                    <div class="navbar-toggle"></div>
-                </div>
-            </nav>
-            <div class="responsive-menu"></div>
+                </ul>
+            </div>
         </div>
-    </header>
+    </nav>
+
+
+
 
 
 

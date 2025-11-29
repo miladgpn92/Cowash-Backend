@@ -34,7 +34,9 @@
      <vc:seo-generator setting="Setting"></vc:seo-generator>
     <vc:inject-code global-setting-dto="@GlobalSetting" is-header="true"></vc:inject-code>
 
-    <link rel="stylesheet" href="~/Template/dist/styles.css" asp-append-version="true">
+ 
+    <link href="~/Template/css/style.css" rel="stylesheet" asp-append-version="true"/>
+    <link href="~/Template/css/rtl.css" rel="stylesheet" asp-append-version="true"/>
     <link rel="manifest" href="~/Template/manifest/manifest.json">
     <meta name="theme-color" content="#3986D1">
 
@@ -42,8 +44,26 @@
 </head>
 
 
-<body>
+<body class="rtl-body" dir="rtl">
 
+ <!-- Preloader -->
+    <div class="preloader-bg">
+    </div>
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="preloader-position loader">
+                <span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" height="100%" viewbox="-1 -1 102 102" width="100%">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98">
+            </path>
+        </svg>
+    </div>
     <vc:adminbar add="AdminBarAdd"
                  edit="AdminBarEdit"
                  list="AdminBarList"
@@ -53,15 +73,8 @@
                  custom="AdminBarCustom">
     </vc:adminbar>
 
-    <!-- Preloader Start -->
-    <div class="preloader">
-        <div class="loading-container">
-            <div class="loading"></div>
-            <div id="loading-icon"><img src="~/Template/images/Dijon/logo/logo.png" alt=""></div>
-        </div>
-    </div>
-    <!-- Preloader End -->
 
+ 
 
     <vc:header></vc:header>
 
@@ -71,9 +84,12 @@
 
     <vc:footer></vc:footer>
 
-
+  
     <vc:inject-code global-setting-dto="@GlobalSetting" is-header="false"></vc:inject-code>
-    <script src="~/Template/dist/main.bundle.js" asp-append-version="true"></script>
+    <script src="~/Template/js/main.js">
+    </script>
+    <script src="~/Template/js/rtl.js">
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

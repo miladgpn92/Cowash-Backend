@@ -1,4 +1,4 @@
-using Entities;
+﻿using Entities;
 using ResourceLibrary;
 using ResourceLibrary.Resources.ErrorMsg;
 using SharedModels.Api;
@@ -19,27 +19,37 @@ namespace SharedModels.Dtos.Shared
         [MaxLength(300, ErrorMessageResourceName = "MaxLenMsg", ErrorMessageResourceType = typeof(ErrorMsg))]
         public string Slug { get; set; }
 
-        [Display(Name = "ProductCode", ResourceType = typeof(MainRes))]
+        [Display(Name = " کد محصول")]
         [Required(AllowEmptyStrings = false, ErrorMessageResourceName = "RequierdMsg", ErrorMessageResourceType = typeof(ErrorMsg))]
         [MaxLength(150, ErrorMessageResourceName = "MaxLenMsg", ErrorMessageResourceType = typeof(ErrorMsg))]
         public string ProductCode { get; set; }
 
-        [Display(Name = "Dimensions", ResourceType = typeof(MainRes))]
+        [Display(Name = " ابعاد")]
         [MaxLength(200, ErrorMessageResourceName = "MaxLenMsg", ErrorMessageResourceType = typeof(ErrorMsg))]
         public string Dimensions { get; set; }
 
         [Display(Name = "GalleryFilesUrl", ResourceType = typeof(MainRes))]
         public string GalleryFilesUrl { get; set; }
 
-        [Display(Name = "ThumbnailUrl", ResourceType = typeof(MainRes))]
+        [Display(Name = " تصویر شاخص")]
         public string ThumbnailUrl { get; set; }
+
+        [Display(Name ="تصویر کاور")]
+        public string CoverUrl { get; set; }
+
 
         [Display(Name = "Description", ResourceType = typeof(MainRes))]
         public string Description { get; set; }
 
-        [Display(Name = "ProductCategoryId", ResourceType = typeof(MainRes))]
+        [Display(Name = " دسته بندی محصول")]
         [Required(AllowEmptyStrings = false, ErrorMessageResourceName = "RequierdMsg", ErrorMessageResourceType = typeof(ErrorMsg))]
         public int? ProductCategoryId { get; set; }
+
+        [Display(Name = " دسته بندی محصول")]
+
+        public string ProductCategoryTitle { get; set; }
+
+
 
         [Display(Name = "PublishDate", ResourceType = typeof(MainRes))]
         public DateTime? PublishDate { get; set; }
@@ -53,6 +63,7 @@ namespace SharedModels.Dtos.Shared
         public string Dimensions { get; set; }
         public string GalleryFilesUrl { get; set; }
         public string ThumbnailUrl { get; set; }
+        public string CoverUrl { get; set; }
         public string Description { get; set; }
         public DateTime? PublishDate { get; set; }
         public DateTime? CreateDate { get; set; }

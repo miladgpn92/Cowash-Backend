@@ -116,6 +116,8 @@ const setInstance = (parentId) => {
 };
 
 (<any>window).handleMediaCrop = async (): Promise<void> => {
+  // Stop default form submit/page refresh when the crop action is triggered from a button inside a form
+  event?.preventDefault();
   cropper.handleCrop((item) => {
     file = item;
     handleMediaUpload();

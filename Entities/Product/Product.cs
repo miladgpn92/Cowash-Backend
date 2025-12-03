@@ -11,6 +11,9 @@ namespace Entities
         public string Dimensions { get; set; }
         public string GalleryFilesUrl { get; set; }
         public string ThumbnailUrl { get; set; }
+
+        public string CoverUrl { get; set; }
+
         public string Description { get; set; }
         public int? ProductCategoryId { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }

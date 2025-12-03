@@ -35,6 +35,8 @@ namespace SharedModels.Dtos
         [Display(Name = "ویدئو معرفی")]
         public string IntroVideoUrl { get; set; }
 
+        [Display(Name = "کاتالوگ")]
+        public string CatalogUrl { get; set; }
 
     }
     public class AddressCallSetting
@@ -53,6 +55,18 @@ namespace SharedModels.Dtos
 
         [Display(Name = "  عرض جغرافیایی")]
         public string Longitude { get; set; }
+
+        [Display(Name = "    آدرس دوم")]
+        public string Address2 { get; set; }
+
+
+        [Display(Name = "  طول جغرافیایی")]
+
+        public string Latitude2 { get; set; }
+
+        [Display(Name = "  عرض جغرافیایی")]
+        public string Longitude2 { get; set; }
+
 
 
     }
@@ -114,6 +128,12 @@ namespace SharedModels.Dtos
 
         [Display(Name = "TwitterLink", ResourceType = typeof(SettingRes))]
         public string TwitterLink { get; set; }
+
+        [Display(Name = " آدرس ایمیل")]
+        public string EmailLink { get; set; }
+
+        [Display(Name = " واتس اپ")]
+        public string WhatsappLink { get; set; }
     }
 
 
@@ -158,9 +178,18 @@ namespace SharedModels.Dtos
 
         public string Longitude { get; set; }
 
+
+        public string Address2 { get; set; }
+
+        public string Latitude2 { get; set; }
+
+        public string Longitude2 { get; set; }
+
+
+
         public string IntroVideoUrl { get; set; }
 
-
+        public string CatalogUrl { get; set; }
 
         public CmsLanguage CmsLanguage { get; set; }
     }
@@ -185,6 +214,12 @@ namespace SharedModels.Dtos
         public string BaleLink { get; set; }
         public string EitaLink { get; set; }
         public string TwitterLink { get; set; }
+
+
+        public string EmailLink { get; set; }
+        public string WhatsappLink { get; set; }
+
+
         public string InjectHeader { get; set; }
 
         public string InjectFooter { get; set; }

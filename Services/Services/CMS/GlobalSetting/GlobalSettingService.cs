@@ -91,6 +91,8 @@ namespace Services.Services.CMS.GlobalSetting
                 setting.LinkeinLink = socialSetting.LinkeinLink;
                 setting.BaleLink = socialSetting.BaleLink;
                 setting.EitaLink = socialSetting.EitaLink;
+                setting.EmailLink = socialSetting.EmailLink;
+                setting.WhatsappLink = socialSetting.WhatsappLink;
             });
         }
 

@@ -2,7 +2,7 @@
 @using Web.Pages.Template.Components.CommonComponent.AdminBar;
 @model Web.Pages.AboutUsModel
 @{
-List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
+    List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
         {
         new BreadcrumbItem()
         {
@@ -11,7 +11,7 @@ List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
         }
         };
 
-        List<AdminBarCustomModel>? Custom = new List<AdminBarCustomModel>()
+    List<AdminBarCustomModel>? Custom = new List<AdminBarCustomModel>()
                 {
                 new AdminBarCustomModel()
                 {
@@ -21,8 +21,54 @@ List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
                 }
                 };
 
-                ViewBag.AdminBarCustom = Custom;
-                }
+    ViewBag.AdminBarCustom = Custom;
+}
 
 
- 
+<vc:page-header title="درباره ما" subtitle="COWASH"></vc:page-header>
+
+<!-- About -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 offset-lg-1">
+                <div class="content">
+
+                    <div class="section-title text-end">
+                        <span>
+                            <vc:content id="25"></vc:content>
+                        </span>
+                        <vc:content id="26"></vc:content>
+                    </div>
+                    <p class="text__justify">
+                        <vc:content id="27"></vc:content>
+                    </p>
+                   
+
+                </div>
+            </div>
+            <div class="col-lg-6  col-md-12 mt-30">
+                <div class="item">
+                    <vc:content id="28" class="img-fluid" alt="COWASH"></vc:content>
+                   
+                    <div class="bottom-fade">
+                    </div>
+                    <div class="icon">
+                        <a class="vid arrow" href="@Model.Setting.IntroVideoUrl?.Trim('[', ']', '"')">
+                            <span class="ti-control-play">
+                            </span>
+                        </a>
+                    </div>
+                    <div class="title">
+                        <h4>
+                            تماشای ویدیو
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<vc:video-intro></vc:video-intro>
+<vc:team-slider></vc:team-slider>

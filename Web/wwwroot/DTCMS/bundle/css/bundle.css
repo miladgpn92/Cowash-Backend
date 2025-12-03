@@ -2808,6 +2808,10 @@ input:checked + .toggle-bg {
   margin-top: -0.625rem;
 }
 
+.mb-0 {
+  margin-bottom: 0px;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -2830,6 +2834,10 @@ input:checked + .toggle-bg {
 
 .mb-2\.5 {
   margin-bottom: 0.625rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
 }
 
 .mb-3 {
@@ -4189,6 +4197,10 @@ input:checked + .toggle-bg {
   --tw-gradient-to-position: 50%;
 }
 
+.bg-fixed {
+  background-attachment: fixed;
+}
+
 .fill-blue-600 {
   fill: #1C64F2;
 }
@@ -4485,6 +4497,14 @@ input:checked + .toggle-bg {
 
 .text-justify {
   text-align: justify;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
 }
 
 .font-mono {

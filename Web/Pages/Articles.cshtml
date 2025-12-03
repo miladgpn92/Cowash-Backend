@@ -16,4 +16,34 @@
  
 }
 
- 
+
+
+<vc:page-header title="اخبار و مقالات" subtitle="COWASH"></vc:page-header>
+
+
+
+<!-- Blog -->
+<section class="blog section-padding bg-white">
+    <div class="container">
+        <div class="row">
+
+
+            @foreach (var item in Model.Items)
+            {
+                <div class="col-lg-4 col-md-6 mb-45">
+                    <vc:article-cart model="item" class=""></vc:article-cart>
+                </div>
+            }
+
+          
+          
+        </div>
+        <!-- Pagination -->
+
+
+        <vc:pagination page="Model.Pagination"></vc:pagination>
+
+
+      
+    </div>
+</section>

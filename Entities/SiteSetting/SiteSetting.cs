@@ -39,9 +39,18 @@ namespace Entities
         public string Longitude { get; set; }
 
 
+
+        public string Address2 { get; set; }
+
+        public string Latitude2 { get; set; }
+
+        public string Longitude2 { get; set; }
+
+
+
         public string IntroVideoUrl { get; set; }
 
-
+        public string CatalogUrl { get; set; }
 
         #endregion
 

@@ -78,6 +78,9 @@ namespace Services.Services.CMS.Setting
                 setting.Address = addressCallSetting.Address;
                 setting.Latitude = addressCallSetting.Latitude;
                 setting.Longitude = addressCallSetting.Longitude;
+                setting.Address2= addressCallSetting.Address2;
+                setting.Latitude2= addressCallSetting.Latitude2;
+                setting.Longitude2= addressCallSetting.Longitude2;
             });
         }
 
@@ -91,7 +94,7 @@ namespace Services.Services.CMS.Setting
                 setting.AboutUs = publicSetting.AboutUs;
                 setting.WorkingHours = publicSetting.WorkingHours;  
                 setting.IntroVideoUrl = publicSetting.IntroVideoUrl;
-
+                setting.CatalogUrl= publicSetting.CatalogUrl;
             });
         }
 

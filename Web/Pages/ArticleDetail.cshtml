@@ -27,4 +27,15 @@
 }
 
 
- 
+<vc:page-header title="@Model.Item.Title" subtitle=""></vc:page-header>
+<!-- Post -->
+<section class="post section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-30">
+                    @Html.Raw(Model.Item.Description)
+            </div>
+        </div>
+
+    </div>
+</section>

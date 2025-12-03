@@ -60,40 +60,52 @@
 else
 {
 
-    <div class="page-pagination wow fadeInUp" data-wow-delay="1.2s">
-        <ul class="pagination">
 
-            @if (Model.Page != 1)
-            {
-                <li >
-                    <a href="@PageRout?page=@(Model.Page -1)&PageSize=@Model.PageSize&@newQueryString"
-                       class="">
-                        <i class="fa-solid fa-arrow-right-long"></i>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul class="pagination-wrap">
 
-                    </a>
-                </li>
-            }
-            @for (int i = start; i <= end; i++)
-            {
-                <li class="@(Model.Page == i  ? "active":"")">
-                    <a href="@PageRout?page=@(i)&PageSize=@Model.PageSize&@newQueryString" >
-                        @(i)
-                    </a>
-                </li>
-            }
-            @if (Model.Total >= Model.PageSize)
-            {
+                @if (Model.Page != 1)
+                {
+                    <li>
+                        <a href="@PageRout?page=@(Model.Page - 1)&PageSize=@Model.PageSize&@newQueryString"
+                           class="">
+                            <i class="ti-angle-right">
+                            </i>
 
-                <li  >
-                    <a href="@PageRout?page=@(Model.Page + 1)&PageSize=@Model.PageSize&@newQueryString"
-                       class=" ">
-                        <i class="fa-solid fa-arrow-left-long"></i>
-                    </a>
-                </li>
-            }
+                        </a>
+                    </li>
+                }
+                @for (int i = start; i <= end; i++)
+                {
+                    <li class="@(Model.Page == i ? "active" : "")">
+                        <a class="@(Model.Page == i ? "active" : "")" href="@PageRout?page=@(i)&PageSize=@Model.PageSize&@newQueryString">
+                            @(i)
+                        </a>
+                    </li>
+                }
+                @if (Model.Total >= Model.PageSize)
+                {
+
+                    <li>
+                        <a href="@PageRout?page=@(Model.Page + 1)&PageSize=@Model.PageSize&@newQueryString"
+                           class=" ">
+                            <i class="ti-angle-left">
+                            </i>
+                        </a>
+                    </li>
+                }
 
 
-        </ul>
+
+              
+              
+            </ul>
+        </div>
     </div>
+
+
+
+ 
 }
 

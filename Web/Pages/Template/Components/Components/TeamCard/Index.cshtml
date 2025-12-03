@@ -3,35 +3,23 @@
  
  
 
-<!-- Team Member Item Start -->
-<div class="team-item wow fadeInUp" data-wow-delay="@(@Model.Delay)s">
-    <!-- team Image Start -->
-    <div class="team-image">
-        <a href="#" data-cursor-text="دیژون">
-            <figure class="image-anime">
-                <img src="@Model.ImgUrl" alt="@Model.Title">
-            </figure>
-        </a>
-    </div>
-    <!-- team Image End -->
-    <!-- Team Body Start -->
-    <div class="team-body">
-        <!-- Team Content Start -->
-        <div class="team-content">
-            <h3><a href="">@Model.Title  </a></h3>
-            <p>@Model.Job  </p>
-        </div>
-        <!-- Team Content End -->
-        <div class="team-social-list">
-            <ul>
-                <li>
-                    <a href="@Model.Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </li>
-            </ul>
+ 
+
+
+
+<div class="item">
+    <div class="wrapper">
+        <img  class="img-fluid" src="@Model.ImgUrl" alt="@Model.Title" />
+
+        <div class="text">
+            <h6 class="position">
+                @Model.Job
+            </h6>
+            <h4 class="name">
+                @Model.Title
+            </h4>
+
         </div>
     </div>
-    <!-- Team Body End -->
 </div>
-<!-- Team Member Item End -->
+

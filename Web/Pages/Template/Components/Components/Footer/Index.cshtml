@@ -18,35 +18,51 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-subtitle">
-                            COWASH
+                            <vc:content id="17"></vc:content>
                         </div>
                         <div class="section-title text-end">
-                            با ما تماس بگیرید
+                            <vc:content id="18"></vc:content>
                             <br />
-                            مشاورین ما در خدمت شما هستند
+                            <vc:content id="19"></vc:content>
                         </div>
                         <div class="wrap">
-                            <a href="tel:+11234567890" class="dir-ltr">
-                                +(98) 9363201642
+
+                            <a href="tel:@Model.Setting.Tell" class="dir-ltr">
+                                @Model.Setting.Tell
+                            </a>
+
+                           -
+
+                            <a href="tel:@Model.Setting.Phonenumber" class="dir-ltr">
+                                @Model.Setting.Phonenumber
                             </a>
 
                             <div class="dv">
                             </div>
-                            <a href="mailto:info@cowashco.com">
-                                info@cowashco.com
+                            <a href="mailto:@Model.GlobalSetting.EmailLink">
+                                @Model.GlobalSetting.EmailLink
                             </a>
                             <div class="dv">
                             </div>
                             <div class="social">
-                                <a class="icon" href="#">
-                                    <i class="fa-brands fa-instagram">
-                                    </i>
-                                </a>
 
-                                <a class="icon" href="#">
-                                    <i class="fa-brands fa-whatsapp">
-                                    </i>
-                                </a>
+                                @if (!string.IsNullOrEmpty(Model.GlobalSetting.InstagramLink))
+                                {
+                                    <a class="icon" href="@Model.GlobalSetting.InstagramLink">
+                                        <i class="fa-brands fa-instagram">
+                                        </i>
+                                    </a>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.GlobalSetting.WhatsappLink))
+                                {
+                                    <a class="icon" href="@Model.GlobalSetting.WhatsappLink">
+                                        <i class="fa-brands fa-whatsapp">
+                                        </i>
+                                    </a>
+                                }
+                              
+
+                              
                             </div>
 
                         </div>
@@ -64,10 +80,12 @@
                     <div class="col-md-4 mb-30">
                         <div class="item">
                             <div class="logo">
-                                <img alt="" src="~/Template/img/logo.png" />
+
+                                <vc:content id="20" alt="COWASH"></vc:content>
+ 
                             </div>
                             <p>
-                              کواش یک برند تخصصی در تولید روشویی‌های پرسلان، کابین‌های PVC و آینه‌های مدرن است که کیفیت و زیبایی را در کنار هم ارائه می‌دهد.
+                                <vc:content id="21"></vc:content>
                             </p>
                             <div class="social-icons">
                                 <ul class="list-inline">
@@ -91,25 +109,21 @@
                     <div class="col-md-3 offset-md-1 mb-30">
                         <div class="item">
                             <h3>
-                            دسترسی سریع
+                                <vc:content id="22"></vc:content>
                             </h3>
                             <div class="links">
                                 <ul>
-                                    <li>
-                                        <a href="contact.html">
-                                          محصولات
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                          درباره ما
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                       تماس با ما
-                                        </a>
-                                    </li>
+
+                                    @foreach (var item in Model.Menus)
+                                    {
+                                        <li>
+                                            <a href="@item.link">
+                                                @item.text
+                                            </a>
+                                        </li>
+                                    }
+
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -117,10 +131,10 @@
                     <div class="col-md-4 mb-30">
                         <div class="item">
                             <h3>
-                           کاتالوگ
+                                <vc:content id="23"></vc:content>
                             </h3>
                             <p>
-                              برای آشنایی بیشتر با کواش میتوانید آخرین نسخه کاتالوگ ما را از لینک زیر دانلود کنید و محصولات ما را مشاهده کنید
+                                <vc:content id="24"></vc:content>
                             </p>
                             <div class="newsletter">
                               <a class="button-1 d-flex align-items-center justify-content-center" href="#">

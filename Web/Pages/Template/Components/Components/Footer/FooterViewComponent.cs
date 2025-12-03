@@ -12,13 +12,14 @@ namespace Web.Pages.Template.Components.Components.Footer
         private readonly ISettingService _settingService;
    
         private readonly IGlobalSettingService _globalSettingService;
-
-        public FooterViewComponent(ISettingService settingService,   IGlobalSettingService globalSettingService)
+        private readonly IMenuSerivce _menuSerivce;
+        public FooterViewComponent(ISettingService settingService, IMenuSerivce menuSerivce, IGlobalSettingService globalSettingService)
         {
             _settingService = settingService;
             _globalSettingService = globalSettingService;
+            _menuSerivce = menuSerivce;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
 
             FooterVCModel model=new FooterVCModel();
@@ -35,6 +36,14 @@ namespace Web.Pages.Template.Components.Components.Footer
                 model.GlobalSetting = resGlobalSetting.Model;
             }
 
+            var resMenu = await _menuSerivce.GetBySlug("footer", HttpContext.RequestAborted);
+            if (resMenu.IsSuccess)
+            {
+                model.Menus = resMenu.Model;
+            }
+
+
+
             return View("/Pages/Template/Components/Components/Footer/Index.cshtml",model);
         }
 
@@ -44,6 +53,8 @@ namespace Web.Pages.Template.Components.Components.Footer
     {
         public SettingSelectDto Setting { get; set; } = new();
         public GetGlobalSettingDto GlobalSetting { get; set; } = new();
+
+        public List<MenuItm> Menus { get; set; } = new();
 
     }
 }

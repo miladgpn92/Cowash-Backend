@@ -26,3 +26,191 @@ Text = "تنظیمات"
 
 }
  
+
+<vc:page-header title="تماس با COWASH" subtitle="COWASH"></vc:page-header>
+
+
+<!-- Contact Box -->
+<div class="contact-box">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 ">
+                <div class="item">
+                    <span class="icon fa-solid fa-phone-volume"></span>
+                    <h5>شماره ثابت</h5>
+                    <p class="mb-1 text-end">
+                        <span class="dir-ltr d-inline-flex justify-content-end phone__number">@Model.Setting.Tell</span>
+                    </p>
+                    <small class="text-muted d-block text-end">
+                        <vc:content id="29"></vc:content>
+                    </small>
+                    <i class="numb fa-solid fa-phone-volume"></i>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6  ">
+                <div class="item">
+                    <span class="icon fa-solid fa-mobile-screen-button"></span>
+                    <h5>شماره همراه</h5>
+                    <p class="mb-1 text-end">
+                        <span class="dir-ltr d-inline-flex justify-content-end phone__number">
+                            @Model.Setting.Phonenumber
+                        </span>
+                    </p>
+                    <small class="text-muted d-block text-end">
+                        <vc:content id="30"></vc:content>
+                    </small>
+                    <i class="numb fa-solid fa-mobile-screen-button"></i>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 ">
+                <div class="item">
+                    <span class="icon fa-solid fa-envelope"></span>
+                    <h5>ایمیل پشتیبانی</h5>
+                    <p class="mb-1 text-end">@Model.GlobalSetting.EmailLink</p>
+                    <small class="text-muted d-block text-end"> 
+                        <vc:content id="31"></vc:content>
+                    </small>
+                    <i class="numb fa-solid fa-envelope"></i>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6  ">
+                <div class="item">
+                    <span class="icon fa-solid fa-location-dot"></span>
+                    <h5 class="d-flex align-items-center">
+                        آدرس دفتر مرکزی
+
+                        <div class="mx-2">
+
+                            <a class="bg-black p-1 text-white rounded-2 text-sm fs-6" href="https://nshn.ir/?lat=@Model.Setting.Latitude&amp;lng=@Model.Setting.Longitude" rel="noopener" target="_blank">
+                                <i class="ti-location-pin ms-1 text-white"></i>
+                                نشان
+                            </a>
+                            <a class="bg-black p-1 text-white rounded-2 text-sm fs-6" href="https://www.google.com/maps?saddr=Current+Location&amp;daddr=@@@Model.Setting.Latitude,@Model.Setting.Longitude" rel="noopener" target="_blank">
+                                <i class="fa-brands fa-google ms-1"></i>
+                                گوگل مپ
+                            </a>
+                            <a class="bg-black p-1 text-white rounded-2 text-sm fs-6" href="https://balad.ir/location?latitude=@Model.Setting.Latitude&amp;longitude=@Model.Setting.Longitude" rel="noopener" target="_blank">
+                                <i class="fa-solid fa-location-arrow ms-1"></i>
+                                بلد
+                            </a>
+                        </div>
+
+                    </h5>
+                    <p class="text-end">
+                       @Model.Setting.Address
+                    </p>
+                    <i class="numb fa-solid fa-location-dot"></i>
+
+                    <h5 class="mt-2 d-flex align-items-center">آدرس دفتر آمل
+
+                        
+                        <div class="mx-2">
+
+                            <a class="bg-black p-1 text-white rounded-2 text-sm fs-6" href="https://nshn.ir/?lat=@Model.Setting.Latitude2&amp;lng=@Model.Setting.Longitude2" rel="noopener" target="_blank">
+                                <i class="ti-location-pin ms-1 text-white"></i>
+                                نشان
+                            </a>
+                            <a class="bg-black p-1 text-white rounded-2 text-sm fs-6" href="https://www.google.com/maps?saddr=Current+Location&amp;daddr=@@@Model.Setting.Latitude2,@Model.Setting.Longitude2" rel="noopener" target="_blank">
+                                <i class="fa-brands fa-google ms-1"></i>
+                                گوگل مپ
+                            </a>
+                            <a class="bg-black p-1 text-white rounded-2 text-sm fs-6" href="https://balad.ir/location?latitude=@Model.Setting.Latitude2&amp;longitude=@Model.Setting.Longitude2" rel="noopener" target="_blank">
+                                <i class="fa-solid fa-location-arrow ms-1"></i>
+                                بلد
+                            </a>
+                        </div>
+
+                    </h5>
+                    <p class="text-end">
+                        
+                        @Model.Setting.Address2
+                    </p>
+                    <i class="numb fa-solid fa-location-dot"></i>
+
+                </div>
+
+
+            </div>
+            <div class="col-lg-6 col-md-6  ">
+                <div class="item active">
+                    <span class="icon fa-regular fa-share"></span>
+                    <h5>شبکه‌های اجتماعی</h5>
+                    <div class="d-flex flex-column align-items-end gap-2 social-links">
+                        <div class="social-icons mt-4">
+                            <ul class="list-inline">
+                                <li>
+
+
+                                
+                                    @if (!string.IsNullOrEmpty(Model.GlobalSetting.WhatsappLink))
+                                    {
+                                       
+                                        <a href="@Model.GlobalSetting.WhatsappLink" rel="noopener" target="_blank">
+                                            <i class="fa-brands fa-whatsapp text-black"></i>
+                                        </a>
+                                    }
+
+                                  
+                                </li>
+                                <li>
+
+                                    @if (!string.IsNullOrEmpty(Model.GlobalSetting.InstagramLink))
+                                    {
+                                       
+                                        <a href="@Model.GlobalSetting.InstagramLink" rel="noopener" target="_blank">
+                                            <i class="fa-brands fa-instagram text-black"></i>
+                                        </a>
+                                    }
+
+                                   
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <i class="numb fa-brands fa-whatsapp"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact -->
+<section class="contact section-padding">
+    <div class="container">
+        <div class="row align-items-start">
+
+            <div class="col-lg-12   col-md-12">
+                <h5>موقعیت ما روی نقشه</h5>
+                <p class="text-muted mb-20">مکان دفتر مرکزی کوواش را با نقشه Leaflet مشاهده کنید.</p>
+                <div class="google-map map" id="contact-map" style="height: 420px;">
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <link href="~/Template/vendor/leaflet/leaflet.css" rel="stylesheet" />
+    <script src="~/Template/vendor/leaflet/leaflet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var lat = 35.732593;
+            var lng = 51.422382;
+            var mapContainer = document.getElementById('contact-map');
+            if (mapContainer && typeof L !== 'undefined') {
+                var contactMap = L.map('contact-map', {
+                    center: [lat, lng],
+                    zoom: 15,
+                    scrollWheelZoom: false
+                });
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; OpenStreetMap'
+                }).addTo(contactMap);
+                L.marker([lat, lng]).addTo(contactMap)
+                    .bindPopup('کوواش - دفتر مرکزی<br>تهران، خیابان ولیعصر، پلاک ۱۸')
+                    .openPopup();
+            }
+        });
+    </script>
+}

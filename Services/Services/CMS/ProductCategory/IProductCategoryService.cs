@@ -12,6 +12,8 @@ namespace Services.Services.CMS.ProductCategory
 
         Task<ResponseModel<ProductCategorySelectDto>> GetByIdAsync(int id, CancellationToken cancellationToken);
 
+        Task<ResponseModel<ProductCategorySelectDto>> GetBySlugAsync(string Slug, CancellationToken cancellationToken);
+
         Task<ResponseModel<ProductCategorySelectDto>> CreateAsync(ProductCategoryDto dto, CancellationToken cancellationToken);
 
         Task<ResponseModel<ProductCategorySelectDto>> UpdateAsync(int id, ProductCategoryDto dto, CancellationToken cancellationToken);

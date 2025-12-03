@@ -19,9 +19,43 @@
     ViewBag.AdminBarRoute = "dynamicpage";
 }
 
+<vc:page-header title="صفحات" subtitle="COWASH"></vc:page-header>
 
+<!-- Services -->
+<section class="services section-padding">
+    <div class="container">
+        <div class="row">
+                @foreach (var item in Model.Items)
+            {
+                
+                <div class="col-md-4 mb-45">
+                    <a href="/p/@item.Slug" class="d-block item">
+                        <div class="text">
+                            <h5>
+                                @item.Title
+                            </h5>
+                            <p>
+                                @TextUtility.TextLimit(item.Description,120,true)
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <span class="arrow" href="service-details.html">
 
+                                <i class="ti-arrow-top-right text-white">
+                                </i>
 
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            }
+       
+
+            <vc:pagination page="Model.Pagination"></vc:pagination>
+
+        </div>
+    </div>
+</section>
  
  
  

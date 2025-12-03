@@ -11,6 +11,7 @@ namespace Services.Services.CMS.Product
         Task<ResponseModel<List<ProductSelectDto>>> ListAsync(int page, int pageSize, string query, int? categoryId, CancellationToken cancellationToken);
 
         Task<ResponseModel<ProductSelectDto>> GetByIdAsync(int id, CancellationToken cancellationToken);
+        Task<ResponseModel<ProductSelectDto>> GetBySlugAsync(string slug, CancellationToken cancellationToken);
 
         Task<ResponseModel<ProductSelectDto>> CreateAsync(ProductDto dto, CancellationToken cancellationToken);
 

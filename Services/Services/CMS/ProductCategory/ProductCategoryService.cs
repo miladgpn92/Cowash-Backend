@@ -139,5 +139,19 @@ namespace Services.Services.CMS.ProductCategory
 
             return new ResponseModel(true, "حذف دسته‌بندی محصول انجام شد.");
         }
+
+        public async Task<ResponseModel<ProductCategorySelectDto>> GetBySlugAsync(string Slug, CancellationToken cancellationToken)
+        {
+            var category = await _repository.TableNoTracking
+                .ProjectTo<ProductCategorySelectDto>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync(a => a.Slug == Slug, cancellationToken);
+
+            if (category == null)
+            {
+                return new ResponseModel<ProductCategorySelectDto>(false, null, "دسته‌بندی محصول پیدا نشد.");
+            }
+
+            return new ResponseModel<ProductCategorySelectDto>(true, category);
+        }
     }
 }

@@ -25,7 +25,7 @@ Text = "تنظیمات"
     ViewBag.AdminBarCustom = Custom;
 
 }
- 
+
 
 <vc:page-header title="تماس با COWASH" subtitle="COWASH"></vc:page-header>
 
@@ -67,7 +67,7 @@ Text = "تنظیمات"
                     <span class="icon fa-solid fa-envelope"></span>
                     <h5>ایمیل پشتیبانی</h5>
                     <p class="mb-1 text-end">@Model.GlobalSetting.EmailLink</p>
-                    <small class="text-muted d-block text-end"> 
+                    <small class="text-muted d-block text-end">
                         <vc:content id="31"></vc:content>
                     </small>
                     <i class="numb fa-solid fa-envelope"></i>
@@ -97,13 +97,14 @@ Text = "تنظیمات"
 
                     </h5>
                     <p class="text-end">
-                       @Model.Setting.Address
+                        @Model.Setting.Address
                     </p>
                     <i class="numb fa-solid fa-location-dot"></i>
 
-                    <h5 class="mt-2 d-flex align-items-center">آدرس دفتر آمل
+                    <h5 class="mt-2 d-flex align-items-center">
+                        آدرس دفتر آمل
 
-                        
+
                         <div class="mx-2">
 
                             <a class="bg-black p-1 text-white rounded-2 text-sm fs-6" href="https://nshn.ir/?lat=@Model.Setting.Latitude2&amp;lng=@Model.Setting.Longitude2" rel="noopener" target="_blank">
@@ -122,7 +123,7 @@ Text = "تنظیمات"
 
                     </h5>
                     <p class="text-end">
-                        
+
                         @Model.Setting.Address2
                     </p>
                     <i class="numb fa-solid fa-location-dot"></i>
@@ -141,28 +142,28 @@ Text = "تنظیمات"
                                 <li>
 
 
-                                
+
                                     @if (!string.IsNullOrEmpty(Model.GlobalSetting.WhatsappLink))
                                     {
-                                       
+
                                         <a href="@Model.GlobalSetting.WhatsappLink" rel="noopener" target="_blank">
                                             <i class="fa-brands fa-whatsapp text-black"></i>
                                         </a>
                                     }
 
-                                  
+
                                 </li>
                                 <li>
 
                                     @if (!string.IsNullOrEmpty(Model.GlobalSetting.InstagramLink))
                                     {
-                                       
+
                                         <a href="@Model.GlobalSetting.InstagramLink" rel="noopener" target="_blank">
                                             <i class="fa-brands fa-instagram text-black"></i>
                                         </a>
                                     }
 
-                                   
+
                                 </li>
                             </ul>
                         </div>
@@ -180,27 +181,31 @@ Text = "تنظیمات"
 
             <div class="col-lg-12   col-md-12">
                 <h5>موقعیت ما روی نقشه</h5>
-                <p class="text-muted mb-20">مکان دفتر مرکزی کوواش را با نقشه Leaflet مشاهده کنید.</p>
+                <p class="text-muted mb-20">مکان دفاتر  کوواش را با نقشه  مشاهده کنید.</p>
                 <div class="google-map map" id="contact-map" style="height: 420px;">
                 </div>
-              
+
             </div>
         </div>
     </div>
 </section>
 
-@section Scripts{
+@section Scripts {
     <link href="~/Template/vendor/leaflet/leaflet.css" rel="stylesheet" />
     <script src="~/Template/vendor/leaflet/leaflet.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var lat = 35.732593;
-            var lng = 51.422382;
+            var lat = @Model.Setting.Latitude;
+            var lng = @Model.Setting.Longitude;
+
+            var lat2 = @Model.Setting.Latitude2;
+            var lng2 = @Model.Setting.Longitude2;
+
             var mapContainer = document.getElementById('contact-map');
             if (mapContainer && typeof L !== 'undefined') {
                 var contactMap = L.map('contact-map', {
                     center: [lat, lng],
-                    zoom: 15,
+                    zoom: 8,
                     scrollWheelZoom: false
                 });
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -208,7 +213,10 @@ Text = "تنظیمات"
                     attribution: '&copy; OpenStreetMap'
                 }).addTo(contactMap);
                 L.marker([lat, lng]).addTo(contactMap)
-                    .bindPopup('کوواش - دفتر مرکزی<br>تهران، خیابان ولیعصر، پلاک ۱۸')
+                    .bindPopup('@Model.Setting.Address')
+                    .openPopup();
+                    L.marker([lat2, lng2]).addTo(contactMap)
+                    .bindPopup('@Model.Setting.Address2')
                     .openPopup();
             }
         });

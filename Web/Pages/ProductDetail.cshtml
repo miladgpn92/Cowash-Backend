@@ -1,0 +1,146 @@
+﻿@page "/product/{slug}"
+@model Web.Pages.ProductDetailModel
+
+@{
+    List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
+    {
+         new BreadcrumbItem()
+        {
+         Title="  محصولات",
+         Link="/products"
+        },
+          new BreadcrumbItem()
+        {
+         Title=Model.Item.Title,
+         Link="#"
+        }
+    };
+
+
+    ViewBag.AdminBarRoute = "product";
+    ViewBag.AdminBarEdit = true;
+    ViewBag.AdminBarDelete = true;
+    ViewBag.AdminBarId = Model.Item.Id;
+
+
+}
+
+<!-- Header Banner -->
+<section class="banner-header section-padding bg-img" data-background="@Model.Item.CoverUrl" data-overlay-dark="8">
+    <div class="v-middle">
+        <div class="container">
+            <div class="col-md-12 mt-30">
+                <h6>
+                    COWASH
+                </h6>
+                <h1>
+                    @Model.Item.Title
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Portfolio Details -->
+<section class="portfolio-details section-padding">
+    <div class="container">
+        <div class="row flex-lg-row flex-sm-column-reverse">
+            <div class="col-lg-8 col-md-12">
+                <div class="row mb-30">
+                    <div class="col-md-12">
+                        <h3>
+                            توضیحات
+                        </h3>
+                        <p class="mb-30">
+                            @Html.Raw(Model.Item.Description)
+                         </p>
+
+                    </div>
+                </div>
+                <!--  Gallery Image -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>
+                            گالری تصاویر
+                        </h3>
+                    </div>
+                </div>
+                <div class="row gallery-items">
+
+                    @if (!string.IsNullOrEmpty(Model.Item.GalleryFilesUrl))
+                    {
+                        @foreach (var item in Model.Item.GalleryFilesUrl)
+                        {
+                            <div class="col-lg-6 col-md-12 mb-20 gallery-masonry-wrapper single-item">
+                                <a class="gallery-masonry-item-img-link img-zoom" href="@item" title="">
+                                    <div class="gallery-box">
+                                        <div class="gallery-img">
+                                            <img alt="" class="img-fluid mx-auto d-block" src="img/services/s1.jpg" />
+                                        </div>
+                                        <div class="gallery-masonry-item-img">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                    }
+
+                   
+                   
+                   
+
+                </div>
+            </div>
+            <!-- Sidebar -->
+            <div class="col-lg-4 col-md-12 mb-4">
+                <div class="sidebar-car">
+                    <div class="title">
+                        <h4>
+                            جزئیات محصول
+                        </h4>
+                    </div>
+                    <div class="item">
+                        <div class="features">
+                            <span>
+                                <i class="ti-list">
+                                </i>
+                                دسته بندی
+                            </span>
+                            <p>
+                                @Model.Item.ProductCategoryTitle
+                            </p>
+                        </div>
+                        <div class="features">
+                            <span>
+                                <i class="ti-file">
+                                </i>
+                                کد محصول
+                            </span>
+                            <p>
+                                @Model.Item.ProductCode
+                            </p>
+                        </div>
+                        <div class="features">
+                            <span>
+                                <i class="ti-ruler">
+                                </i>
+                                ابعاد
+                            </span>
+                            <p>
+                                @Model.Item.Dimensions
+                            </p>
+                        </div>
+
+                        <div class="text-center">
+                            <a class="button-4 mt-30"   href="/contactus">
+                                مشاوره با ما
+                                <span class="ti-arrow-top-right">
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

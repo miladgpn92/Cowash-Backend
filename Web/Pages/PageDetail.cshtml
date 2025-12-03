@@ -23,7 +23,22 @@
 
 }
  
-
+<vc:page-header title="@Model.Item.Title" subtitle="COWASH"></vc:page-header>
  
 
- 
+<!-- Services Details -->
+<section class="service-details section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                    <div class="col-md-12 mb-60">
+                     @Html.Raw(Model.Item.Description)
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

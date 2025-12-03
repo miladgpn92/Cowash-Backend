@@ -146,5 +146,19 @@ namespace Services.Services.CMS.Product
 
             return new ResponseModel(true, "محصولات انتخاب‌شده با موفقیت حذف شدند.");
         }
+
+        public async Task<ResponseModel<ProductSelectDto>> GetBySlugAsync(string slug, CancellationToken cancellationToken)
+        {
+            var product = await _repository.TableNoTracking
+     .ProjectTo<ProductSelectDto>(_mapper.ConfigurationProvider)
+     .FirstOrDefaultAsync(a => a.Slug == slug, cancellationToken);
+
+            if (product == null)
+            {
+                return new ResponseModel<ProductSelectDto>(false, null, "محصول یافت نشد.");
+            }
+
+            return new ResponseModel<ProductSelectDto>(true, product);
+        }
     }
 }

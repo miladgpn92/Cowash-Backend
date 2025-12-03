@@ -1,0 +1,41 @@
+﻿@page "/products/{cat?}"
+@model Web.Pages.ProductsModel
+
+@{
+    List<BreadcrumbItem> breadcrumbItems = new List<BreadcrumbItem>()
+    {
+         new BreadcrumbItem()
+        {
+         Title="74",
+         Link="#"
+        }
+    };
+
+    ViewBag.AdminBarList = true;
+    ViewBag.AdminBarAdd = true;
+    ViewBag.AdminBarRoute = "product";
+
+}
+
+<vc:page-header title="   محصولات COWASH" subtitle="COWASH"></vc:page-header>
+
+<!-- Portfolio -->
+<section class="portfolio section-padding">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model.Items)
+            {
+                <div class="col-lg-4 col-md-6 mb-60">
+                    <vc:product-cart model="item"></vc:product-cart>
+                </div>
+            }
+         
+           
+        </div>
+        <!-- Pagination -->
+
+        <vc:pagination page="Model.Pagination"></vc:pagination>
+
+    </div>
+</section>

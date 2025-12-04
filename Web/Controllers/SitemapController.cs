@@ -62,7 +62,7 @@ namespace Web.Controllers
             AddUrlWithDefaults(BuildUrl(baseUrl, "/aboutus"));
             AddUrlWithDefaults(BuildUrl(baseUrl, "/contactus"));
             AddUrlWithDefaults(BuildUrl(baseUrl, "/team"));
-            AddUrlWithDefaults(BuildUrl(baseUrl, "/menu"));
+            AddUrlWithDefaults(BuildUrl(baseUrl, "/br"));
 
             // Process dynamic content
             await ProcessItemsAsync(

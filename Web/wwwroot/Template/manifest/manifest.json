@@ -1,7 +1,7 @@
 ﻿{
-  "name": "کافه و رستوران دیژون",
-  "short_name": "Dijon",
-  "description": "کافه و رستوران دیژون",
+  "name": "کواش -COWASH",
+  "short_name": "COWASH",
+  "description": "کواش | تولید کننده روشویی پرسلان، کابین PVC و آینه مدرن",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -21,6 +21,6 @@
   ],
   "apple-mobile-web-app-capable": "yes",
   "apple-mobile-web-app-status-bar-style": "black",
-  "apple-mobile-web-app-title": "Dijon",
+  "apple-mobile-web-app-title": "COWASH",
   "apple-touch-icon": "apple-touch-icon.png"
 }

@@ -22,8 +22,23 @@
     ViewBag.AdminBarDelete = true;
     ViewBag.AdminBarId = Model.Item.Id;
 
+    var galleryFiles = System.Array.Empty<string>();
+    if (!string.IsNullOrWhiteSpace(Model.Item.GalleryFilesUrl))
+    {
+        try
+        {
+            galleryFiles = System.Text.Json.JsonSerializer.Deserialize<string[]>(Model.Item.GalleryFilesUrl) ?? System.Array.Empty<string>();
+        }
+        catch
+        {
+            galleryFiles = System.Array.Empty<string>();
+        }
+    }
 
 }
+
+
+ 
 
 <!-- Header Banner -->
 <section class="banner-header section-padding bg-img" data-background="@Model.Item.CoverUrl" data-overlay-dark="8">
@@ -66,15 +81,15 @@
                 </div>
                 <div class="row gallery-items">
 
-                    @if (!string.IsNullOrEmpty(Model.Item.GalleryFilesUrl))
+                    @if (galleryFiles.Length > 0)
                     {
-                        @foreach (var item in Model.Item.GalleryFilesUrl)
+                        @foreach (var item in galleryFiles)
                         {
                             <div class="col-lg-6 col-md-12 mb-20 gallery-masonry-wrapper single-item">
                                 <a class="gallery-masonry-item-img-link img-zoom" href="@item" title="">
                                     <div class="gallery-box">
                                         <div class="gallery-img">
-                                            <img alt="" class="img-fluid mx-auto d-block" src="img/services/s1.jpg" />
+                                            <img alt="@Model.Item.Title" class="img-fluid mx-auto d-block" src="@item" />
                                         </div>
                                         <div class="gallery-masonry-item-img">
                                         </div>

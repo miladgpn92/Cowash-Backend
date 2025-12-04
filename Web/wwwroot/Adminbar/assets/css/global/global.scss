@@ -2,59 +2,77 @@
 .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 16;
 }
-.adminbar{
+.adminbar {
     padding: 16px 16px;
     background-color: #1F2937;
-    z-index:1000;
-    position:relative;
-    ul{
+    z-index: 1000;
+    position: relative;
+
+    ul {
         list-style: none;
         margin: 0;
         padding: 0;
-        li{
+
+        li {
             margin: 0;
             padding: 0;
         }
     }
-    a{
+
+    a {
         color: #fff;
     }
-    .adminbar__content{
+
+    .adminbar__content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .right{
-            .admin__icon{
+
+        .right {
+            .admin__icon {
                 display: flex;
                 align-items: center;
                 color: #fff;
-                span{
+
+                span {
                     margin-right: 8px;
                 }
             }
         }
-        .left{
-            ul{
+
+        .left {
+            ul {
                 display: flex;
                 align-items: center;
-                li{
-                    &:hover{
+
+                li {
+                    &:hover {
                         background-color: rgba(255,255,255,0.1);
                     }
+
                     padding: 4px 8px;
                     border-radius: 4px;
                     margin-right: 12px;
-                    a , button{
+
+                    a, button {
                         font-size: 13px;
                         color: #fff;
-                        display:flex;
-                        align-items:center;
-                        .text{
+                        display: flex;
+                        align-items: center;
+
+                        .text {
                             margin-right: 4px;
+
                             @media (max-width: 992px) {
                                 display: none;
                             }
                         }
+                    }
+
+                    #delete-btn {
+                        background: #b91616;
+                        border-radius: 3px;
+                        padding: 1px 8px;
                     }
                 }
             }

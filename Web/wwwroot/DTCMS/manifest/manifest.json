@@ -1,7 +1,7 @@
 {
-  "name": "پنل دیژون",
-  "short_name": "پنل دیژون",
-  "description": "پنل مدیریت دیژون",
+  "name": "پنل کواش",
+  "short_name": "پنل کواش",
+  "description": "پنل مدیریت کواش",
   "start_url": "/dtcms",
   "scope": "/dtcms",
   "display": "standalone",
@@ -21,6 +21,6 @@
   ],
   "apple-mobile-web-app-capable": "yes",
   "apple-mobile-web-app-status-bar-style": "black",
-  "apple-mobile-web-app-title": "پنل دیژون",
+  "apple-mobile-web-app-title": "پنل کواش",
   "apple-touch-icon": "apple-touch-icon.png"
 }
